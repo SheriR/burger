@@ -1,0 +1,43 @@
+<div class="row mx-auto" style="width: 200px;">
+    <img src="../public/assets/img/pngkit_french-fries-png_208607.png" class="rounded" alt="Burger & Fries">
+</div>
+
+<div class="row mx-auto">
+    <h1 class="mx-auto">Eat-Da-Burger!</h1>
+</div>
+
+
+<div class="row">
+    <div class="column mx-auto">
+        <ol id="not devoured">
+            <h3>Burgers Ready to be devoured</h3>
+            {{#each burgers}}
+            {{#unless deboured}}
+            {{> burgers/burger-block devoured=false}}
+            {{/unless}}
+            {{/each}}
+        </ol>
+    </div>
+
+    <div class="column mx-auto">
+        <ol id="devoured">
+            <h3>Burgers Already DEVOURED!</h3>
+            {{#each burgers}}
+            {{#if devoured}}
+            {{> burgers/burger-block devoured=true}}
+            {{/if}}
+            {{/each}}
+        </ol>
+    </div>
+</div>
+
+<div class="row mx-auto">
+    <form class="create-form">
+        <div class="form-group">
+            <label for="new_burger">Burger Name:</label>
+            <input type="text" id="newBurger" name="new_burger">
+        </div>
+        <button type="submit">Add Burger</button>
+    </form>
+    <h2>Add a Burger you want to eat and click the submit button</h2>
+</div>
