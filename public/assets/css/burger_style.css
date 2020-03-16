@@ -1,0 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+
+#burger {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
