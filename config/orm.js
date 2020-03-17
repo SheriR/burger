@@ -30,16 +30,16 @@ var orm = {
     });
   },
 
-  // An example of objColVals would be {burger_name: cheeser burger, devoured: true}
-  updateOne: function(table, objColVals, condition, cb) {
-    var queryString = "UPDATE ?? SET ? WHERE ?";
-    connection.query(queryString, [objColVals, condition], function(
+  updateOne: function(tableInput, column, burgerId, cb) {
+    var queryString = "UPDATE ?? SET ?? = 1 WHERE id = ?";
+    connection.query(queryString, [tableInput, column, burgerId], function(
       err,
-      result
+      res
     ) {
+      console.log("update" + queryString);
       if (err) throw err;
-      console.log(result);
-      cb(result);
+      console.log(res);
+      cb(res);
     });
   }
 };
