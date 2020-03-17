@@ -1,5 +1,5 @@
 <div class="row mx-auto">
-    <img src="../public/assets/img/burger.jfif" id="burger" alt="Burger">
+    <img src="/assets/img/Burgers.jpg" id="burger" alt="Burger">
 </div>
 
 <div class="row mx-auto">
@@ -10,7 +10,7 @@
 <div class="row">
     <div class="column mx-auto">
         <ol id="not devoured">
-            <h3>Burgers Ready to be devoured</h3>
+            <h4>Burgers Ready to be devoured</h4>
             {{#each burgers}}
             {{#unless deboured}}
             {{> burgers/burger-block devoured=false}}
@@ -21,7 +21,7 @@
 
     <div class="column mx-auto">
         <ol id="devoured">
-            <h3>Burgers Already DEVOURED!</h3>
+            <h4>Burgers Already DEVOURED!</h4>
             {{#each burgers}}
             {{#if devoured}}
             {{> burgers/burger-block devoured=true}}
@@ -34,10 +34,10 @@
 <div class="row mx-auto">
     <form class="create-form">
         <div class="form-group">
-            <label for="new_burger">Burger Name:</label>
+            <label for="new_burger">New Burger to Devour:</label>
             <input type="text" id="newBurger" name="new_burger">
         </div>
         <button type="submit">Add Burger</button>
     </form>
-    <h2>Add a Burger you want to eat and click the submit button</h2>
+    <h3>Add a Burger you want to eat and click Add Burger button</h3>
 </div>

@@ -12,50 +12,33 @@ var connection = require("../config/connection.js");
 
 // Object for all our SQL statement functions.
 var orm = {
-  selectAll: function(tableInput, cb) {
-    var queryString = "SELECT * FROM " + tableInput + ";";
-    connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err;
-      }
+  selectAll: function(table, cb) {
+    var queryString = "SELECT * FROM ??";
+    connection.query(queryString, [table], function(err, result) {
+      if (err) throw err;
+      console.log(result);
       cb(result);
     });
   },
-  insertOne: function(table, column, value, cb) {
-    var queryString = "INSERT INTO  " + table;
 
-    queryString += " (";
-    queryString += cols.toString();
-    queryString += ") ";
-    queryString += "VALUES (";
-    queryString += printQuestionMarks(vals.length);
-    queryString += ") ";
-
-    console.log(queryString);
-
-    connection.query(queryString, vals, function(err, result) {
-      if (err) {
-        throw err;
-      }
-
+  insertOne: function(table, objColVals, cb) {
+    var queryString = "INSERT INTO ?? SET ?";
+    connection.query(queryString, [table, objColVals], function(err, result) {
+      if (err) throw err;
+      console.log(result);
       cb(result);
     });
   },
+
   // An example of objColVals would be {burger_name: cheeser burger, devoured: true}
   updateOne: function(table, objColVals, condition, cb) {
-    var queryString = "UPDATE " + table;
-
-    queryString += " SET ";
-    queryString += objToSql(objColVals);
-    queryString += " WHERE ";
-    queryString += condition;
-
-    console.log(queryString);
-    connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err;
-      }
-
+    var queryString = "UPDATE ?? SET ? WHERE ?";
+    connection.query(queryString, [objColVals, condition], function(
+      err,
+      result
+    ) {
+      if (err) throw err;
+      console.log(result);
       cb(result);
     });
   }
